@@ -1,5 +1,12 @@
 <div align="center">
 
+
+
+```
+
+luckysheet.decryptPrint() // new method
+```
+
 ![logo](/docs/.vuepress/public/img/logo_text.png)
 
 [![Join the chat at https://gitter.im/mengshukeji/Luckysheet](https://badges.gitter.im/mengshukeji/Luckysheet.svg)](https://gitter.im/mengshukeji/Luckysheet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
