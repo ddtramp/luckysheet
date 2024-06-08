@@ -5925,14 +5925,22 @@ export function getScreenshot(options = {}) {
   let visibledatarow = Store.visibledatarow;
   let visibledatacolumn = Store.visibledatacolumn;
 
-  let scrollHeight, rh_height;
+  const ignoreEndRowLine = options?.ignoreEndRowLine ?? 0;
+
+  let scrollHeight, rh_height, rh_height_line;
   if (str - 1 < 0) {
     scrollHeight = 0;
     rh_height = visibledatarow[edr];
+    rh_height_line = visibledatarow[edr - ignoreEndRowLine];
   } else {
     scrollHeight = visibledatarow[str - 1];
     rh_height = visibledatarow[edr] - visibledatarow[str - 1];
+
+    rh_height_line =
+      visibledatarow[edr - ignoreEndRowLine] - visibledatarow[str - 1];
   }
+
+  console.log(rh_height, edr, str);
 
   let scrollWidth, ch_width;
   if (stc - 1 < 0) {
@@ -5972,7 +5980,7 @@ export function getScreenshot(options = {}) {
     //补上 左边框和上边框
     ctx_newCanvas.beginPath();
     ctx_newCanvas.moveTo(0, 0);
-    ctx_newCanvas.lineTo(0, Store.devicePixelRatio * rh_height);
+    ctx_newCanvas.lineTo(0, Store.devicePixelRatio * rh_height_line);
     ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
     ctx_newCanvas.strokeStyle = BorderStrokeStyle;
     ctx_newCanvas.stroke();
